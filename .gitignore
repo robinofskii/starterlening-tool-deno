@@ -1,0 +1,20 @@
+# Deno specific ignores
+deno.lock
+deno_dir/
+
+# Node.js specific ignores (if applicable)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor specific ignores
+.vscode/
+.idea/
+*.swp
+
+# Testing specific ignores
+coverage/
