@@ -19,9 +19,7 @@ const loadCsvFile = async <T>(
   }
 };
 
-export const loadSVnCsv = async (): Promise<ParsedSvnDataEntry[]> => {
-  const dataUrl = "./src/data/datasheet.csv";
-
+export const loadSVnCsv = async (dataUrl: string): Promise<ParsedSvnDataEntry[]> => {
   console.log(`Loading SVn data from ${dataUrl}`);
 
   const data = await loadCsvFile(
@@ -41,9 +39,7 @@ export const loadSVnCsv = async (): Promise<ParsedSvnDataEntry[]> => {
   return data;
 };
 
-export const loadCbsCsv = async (): Promise<ParsedCbsDataEntry[]> => {
-  const dataUrl = "./src/data/woonplaatsen_nederland_2024.csv";
-
+export const loadCbsCsv = async (dataUrl: string): Promise<ParsedCbsDataEntry[]> => {
   console.log(`Loading CBS data from ${dataUrl}`);
 
   const data = await loadCsvFile(
