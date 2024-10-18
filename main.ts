@@ -1,5 +1,5 @@
-import { formatFromCsv } from "./src/helpers/index.ts";
+import { formatFromSvnCsv } from "./src/helpers/index.ts";
 
-formatFromCsv("./src/data/datasheet.csv").then((data) => {
+formatFromSvnCsv("./src/data/datasheet.csv").then((data) => {
   console.log(data);
 });

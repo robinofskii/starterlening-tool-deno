@@ -1,16 +1,17 @@
 import fs from "node:fs";
 import { parse } from "npm:csv-parse";
-import { ParsedCSV } from "../types/index.ts";
+import type { ParsedSvnData, SvnDataRow } from "../types/index.ts";
 
-export const formatFromCsv = (fileUrl: string): Promise<ParsedCSV> => {
-  let data: ParsedCSV = [];
+export const formatFromSvnCsv = (fileUrl: string): Promise<ParsedSvnData> => {
+  const data: ParsedSvnData = [];
 
-  const promise = new Promise<ParsedCSV>((resolve, reject) => {
+  const promise = new Promise<ParsedSvnData>((resolve, reject) => {
     console.log("Loading csv file");
     fs.createReadStream(fileUrl)
       .pipe(parse({ delimiter: ",", from_line: 2 }))
-      .on("data", (row) => {
-        data = [...data, { municipality: row[0], loan: row[1] }];
+      .on("data", (row: SvnDataRow) => {
+        const [municipality, loan] = row;
+        data.push({ municipality, loan });
       })
       .on("end", function () {
         console.log("Finished loading csv file");
