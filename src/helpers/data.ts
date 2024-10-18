@@ -5,6 +5,5 @@
  * @returns The normalized string.
  */
 export const normalizeString = (name: string): string => {
-    return name.trim().toLowerCase();
-  }
-  
+  return name.trim().toLowerCase();
+};

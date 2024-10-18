@@ -1,7 +1,10 @@
-import {
-normalizeString
-} from "../helpers/index.ts";
-import type { MergeDataResult, MergedDataEntry, ParsedCbsDataEntry, ParsedSvnDataEntry } from "../types/index.ts";
+import { normalizeString } from "../helpers/index.ts";
+import type {
+  MergeDataResult,
+  MergedDataEntry,
+  ParsedCbsDataEntry,
+  ParsedSvnDataEntry,
+} from "../types/index.ts";
 
 /**
  * Merges SVN data entries with CBS data entries based on matching municipalities.
@@ -61,6 +64,5 @@ export const mergeData = (
     }
   }
 
-  return mergedData
-
+  return mergedData;
 };

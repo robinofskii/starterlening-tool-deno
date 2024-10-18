@@ -1,1 +1,1 @@
-export * from "./csv-parse-options.ts"
+export * from "./csv-parse-options.ts";
