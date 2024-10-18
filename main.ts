@@ -1,5 +1,12 @@
-import { formatFromSvnCsv } from "./src/helpers/index.ts";
+import { formatFromSvnCsv, formatFromCbsCsv } from "./src/helpers/index.ts";
 
-formatFromSvnCsv("./src/data/datasheet.csv").then((data) => {
-  console.log(data);
+const SvnData = await formatFromSvnCsv();
+const CbsData = await formatFromCbsCsv();
+
+// Merge the two datasets
+const mergedData = SvnData.map((svnDataRow) => {
+  const cbsDataRow = CbsData.find((cbsDataRow) => cbsDataRow.municipality === svnDataRow.municipality);
+  return { ...svnDataRow, ...cbsDataRow };
 });
+
+console.log(mergedData);
