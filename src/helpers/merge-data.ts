@@ -1,17 +1,23 @@
-import type {
-  ParsedCbsDataEntry,
-  ParsedSvnDataEntry,
+import {
+normalizeString
 } from "../helpers/index.ts";
+import type { MergeDataResult, MergedDataEntry, ParsedCbsDataEntry, ParsedSvnDataEntry } from "../types/index.ts";
 
-export type MergedDataEntry = ParsedSvnDataEntry & ParsedCbsDataEntry;
-
-export type MergeDataResult = MergedDataEntry[];
-
-
-function normalizeMunicipality(name: string): string {
-  return name.trim().toLowerCase();
-}
-
+/**
+ * Merges SVN data entries with CBS data entries based on matching municipalities.
+ *
+ * @param svnData - An array of parsed SVN data entries.
+ * @param cbsData - An array of parsed CBS data entries.
+ * @returns An array of merged data entries.
+ * @throws Will throw an error if either `svnData` or `cbsData` is empty.
+ *
+ * The function normalizes the municipality names from both datasets and merges
+ * entries that have matching municipalities. If an SVN entry does not have a
+ * corresponding CBS entry, it is added to the list of unmatched SVN entries.
+ *
+ * The function logs the number of successfully merged entries and warns about
+ * any unmatched SVN entries.
+ */
 export const mergeData = (
   svnData: ParsedSvnDataEntry[],
   cbsData: ParsedCbsDataEntry[],
@@ -28,12 +34,12 @@ export const mergeData = (
 
   const cbsDataMap = new Map<string, ParsedCbsDataEntry>();
   for (const cbsEntry of cbsData) {
-    const normalizedMunicipality = normalizeMunicipality(cbsEntry.municipality);
+    const normalizedMunicipality = normalizeString(cbsEntry.municipality);
     cbsDataMap.set(normalizedMunicipality, cbsEntry);
   }
 
   for (const svnEntry of svnData) {
-    const normalizedMunicipality = normalizeMunicipality(svnEntry.municipality);
+    const normalizedMunicipality = normalizeString(svnEntry.municipality);
     const cbsEntry = cbsDataMap.get(normalizedMunicipality);
 
     if (cbsEntry) {
@@ -51,7 +57,7 @@ export const mergeData = (
       `Found ${unmatchedSvnEntries.length} SVN entries without a matching CBS entry:`,
     );
     for (const entry of unmatchedSvnEntries) {
-      console.warn(`- Municipality: ${entry.municipality}`);
+      console.warn(`- ${entry.municipality}`);
     }
   }
 

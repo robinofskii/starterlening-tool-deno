@@ -1,21 +1,12 @@
 import { parse, type ParseOptions } from "@std/csv";
+import { DEFAULT_PARSE_OPTIONS } from "../constants/index.ts";
+import type { ParsedCbsDataEntry, ParsedSvnDataEntry } from "../types/index.ts";
 
-export interface ParsedSvnDataEntry {
-    municipality: string;
-    loan: string;
-}
-
-export interface ParsedCbsDataEntry {
-    municipality: string;
-    state: string;
-    partOfCountry: string;
-}
-
-async function loadCsvFile<T>(
+const loadCsvFile = async <T>(
     filePath: string,
     parseOptions: ParseOptions,
     mapRow: (row: Record<string, string>) => T
-): Promise<T[]> {
+): Promise<T[]> => {
     try {
         const fileContent = await Deno.readTextFile(filePath);
         const rawData = parse(fileContent, parseOptions) as Array<Record<string, string>>;
@@ -34,10 +25,8 @@ export const loadSVnCsv = async (): Promise<ParsedSvnDataEntry[]> => {
     const data =  await loadCsvFile(
         dataUrl,
         {
-            skipFirstRow: true,
+            ...DEFAULT_PARSE_OPTIONS,
             columns: ["municipality", "loan"],
-            trimLeadingSpace: true,
-            lazyQuotes: true,
         },
         (row) => ({
             municipality: row.municipality.trim(),
@@ -58,7 +47,7 @@ export const loadCbsCsv = async (): Promise<ParsedCbsDataEntry[]> => {
     const data =  await loadCsvFile(
         "./src/data/woonplaatsen_nederland_2024.csv",
         {
-            skipFirstRow: true,
+            ...DEFAULT_PARSE_OPTIONS,
             columns: [
                 "ID",
                 "Woonplaatsen",
@@ -71,8 +60,6 @@ export const loadCbsCsv = async (): Promise<ParsedCbsDataEntry[]> => {
                 "Code_7",
             ],
             separator: ";",
-            trimLeadingSpace: true,
-            lazyQuotes: true,
         },
         (row) => ({
             municipality: row.Naam_2.trim(),
