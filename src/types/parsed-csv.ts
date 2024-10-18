@@ -1,5 +1,4 @@
 export type ParsedCSV = {
-    municipality: string;
-    loan: string;
-  }[];
-  
+  municipality: string;
+  loan: string;
+}[];
