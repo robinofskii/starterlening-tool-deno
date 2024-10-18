@@ -1,4 +1,14 @@
-export type CbsDataRow = [string, string, string, string, string, string, string,string, string];
+export type CbsDataRow = [
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+];
 
 export type ParsedCbsData = {
   municipality: string;

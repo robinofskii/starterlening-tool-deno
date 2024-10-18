@@ -1,6 +1,11 @@
 import fs from "node:fs";
 import { parse } from "npm:csv-parse";
-import type { CbsDataRow, ParsedSvnData, SvnDataRow,ParsedCbsData } from "../types/index.ts";
+import type {
+  CbsDataRow,
+  ParsedCbsData,
+  ParsedSvnData,
+  SvnDataRow,
+} from "../types/index.ts";
 
 export const formatFromSvnCsv = (): Promise<ParsedSvnData> => {
   const data: ParsedSvnData = [];
@@ -34,7 +39,11 @@ export const formatFromCbsCsv = (): Promise<ParsedCbsData> => {
     fs.createReadStream("./src/data/woonplaatsen_nederland_2024.csv")
       .pipe(parse({ delimiter: ";", from_line: 2, relax_quotes: true }))
       .on("data", (row: CbsDataRow) => {
-        data.push({ municipality: row[3].trim(), state: row[5].trim(), partOfCountry: row[7].trim() });
+        data.push({
+          municipality: row[3].trim(),
+          state: row[5].trim(),
+          partOfCountry: row[7].trim(),
+        });
       })
       .on("end", function () {
         console.log("Finished loading CBS data");
