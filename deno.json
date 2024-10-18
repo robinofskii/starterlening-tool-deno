@@ -1,10 +1,16 @@
 {
   "tasks": {
-    "dev": "deno run --allow-read --watch main.ts"
+    "dev": "deno run --allow-read --watch main.ts",
+    "test": "deno test --allow-read --allow-write --parallel",
+    "test:coverage": "deno test --allow-read --allow-write --coverage=coverage && deno coverage ./coverage --detailed --html",
+    "test:watch": "deno test --allow-read --allow-write --watch",
+    "fmt": "deno fmt"
+
   },
   "imports": {
     "@std/assert": "jsr:@std/assert@1",
-    "@std/csv": "jsr:@std/csv@^1.0.3"
+    "@std/csv": "jsr:@std/csv@^1.0.3",
+    "@std/expect": "jsr:@std/expect@^1.0.5"
   },
   "compilerOptions": {
     "lib": ["dom", "deno.ns"]
