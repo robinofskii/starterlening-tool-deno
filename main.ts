@@ -1,4 +1,9 @@
-import { loadCbsCsv, loadSVnCsv, mergeData } from "./src/helpers/index.ts";
+import {
+  loadCbsCsv,
+  loadSVnCsv,
+  mergeData,
+  writeDataToCsv,
+} from "./src/helpers/index.ts";
 
 try {
   const SvnData = await loadSVnCsv("./src/data/datasheet.csv");
@@ -6,7 +11,11 @@ try {
     "./src/data/woonplaatsen_nederland_2024.csv",
   );
 
-  mergeData(SvnData, CbsData);
+  const mergedData = mergeData(SvnData, CbsData);
+  writeDataToCsv({
+    data: mergedData,
+    filename: "./src/data/merged-data.csv",
+  });
 } catch (error) {
   console.error("An error occurred:", error);
 }
