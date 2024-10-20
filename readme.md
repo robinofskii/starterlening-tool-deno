@@ -22,6 +22,7 @@ area and export the list of municipalities to popular housing sites.
 ### Prerequisites
 
 - [Deno](https://deno.land/) installed on your machine.
+- [PostgreSQL](https://www.postgresql.org/) installed on your machine.
 
 ### Installation
 
@@ -35,6 +36,20 @@ area and export the list of municipalities to popular housing sites.
    ```sh
    deno cache main.ts
    ```
+
+3. Set .env variables
+
+    Create a `.env` file in the root directory of the project and add the
+    following variables (replace the values with your own):
+  
+    ```sh
+    # .env
+    DB_DATABASE="starterslening-tool"
+    DB_HOSTNAME="localhost"
+    DB_PORT="5432"
+    DB_USER="denoapp"
+    DB_PASSWORD="123456"
+    ```
 
 ### Running the Project
 
