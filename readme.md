@@ -39,17 +39,17 @@ area and export the list of municipalities to popular housing sites.
 
 3. Set .env variables
 
-    Create a `.env` file in the root directory of the project and add the
-    following variables (replace the values with your own):
-  
-    ```sh
-    # .env
-    DB_DATABASE="starterslening-tool"
-    DB_HOSTNAME="localhost"
-    DB_PORT="5432"
-    DB_USER="denoapp"
-    DB_PASSWORD="123456"
-    ```
+   Create a `.env` file in the root directory of the project and add the
+   following variables (replace the values with your own):
+
+   ```sh
+   # .env
+   DB_DATABASE="starterslening-tool"
+   DB_HOSTNAME="localhost"
+   DB_PORT="5432"
+   DB_USER="denoapp"
+   DB_PASSWORD="123456"
+   ```
 
 ### Running the Project
 
