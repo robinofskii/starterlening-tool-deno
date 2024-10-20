@@ -1,6 +1,7 @@
 {
   "tasks": {
-    "dev": "deno run --allow-read --allow-write --watch main.ts",
+    "db:populate": "deno run --allow-read --allow-write --allow-env --allow-net src/helpers/db/populate.ts",
+    "dev": "deno run --allow-read --allow-write --allow-env --allow-net --watch main.ts",
     "test": "deno test --allow-read --allow-write --parallel",
     "test:coverage": "deno test --allow-read --allow-write --coverage=coverage && deno coverage ./coverage --detailed --html",
     "test:watch": "deno test --allow-read --allow-write --watch",
@@ -9,6 +10,7 @@
   "imports": {
     "@std/assert": "jsr:@std/assert@1",
     "@std/csv": "jsr:@std/csv@^1.0.3",
+    "@std/dotenv": "jsr:@std/dotenv@^0.225.2",
     "@std/expect": "jsr:@std/expect@^1.0.5"
   },
   "compilerOptions": {
