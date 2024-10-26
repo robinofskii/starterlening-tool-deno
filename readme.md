@@ -54,7 +54,8 @@ area and export the list of municipalities to popular housing sites.
 
 To run the project, use the Deno Tasks. The following tasks are available:
 
-- `db:populate`: Populate the database with data from the CSV files.
+- `merge-csv`: Merge the two CSV files into one.
+- `db:seed`: Populate the municipalities table with data from the CSV file.
 - `db:geo`: Get geolocation data for each municipality in the database.
 - `dev`: Run the project in development mode. (Currently only prints hello
   world)
