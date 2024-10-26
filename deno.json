@@ -1,6 +1,7 @@
 {
   "tasks": {
     "db:populate": "deno run --allow-read --allow-write --allow-env --allow-net src/helpers/db/populate.ts",
+    "db:geo": "deno run --allow-read --allow-write --allow-env --allow-net src/helpers/db/get-geo-data-for-db.ts",
     "dev": "deno run --allow-read --allow-write --allow-env --allow-net --watch main.ts",
     "test": "deno test --allow-read --allow-write --parallel",
     "test:coverage": "deno test --allow-read --allow-write --coverage=coverage && deno coverage ./coverage --detailed --html",
