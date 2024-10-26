@@ -1,5 +1,5 @@
-import { postgresClient } from "../helpers/db/index.ts";
-import type { Geolocation, Municipality } from "../types/api/index.ts";
+import { postgresClient } from "../client.ts";
+import type { Geolocation, Municipality } from "../types/index.ts";
 
 export const getGeolocations = async (): Promise<Geolocation[]> => {
   const data = await postgresClient<Geolocation[]>`

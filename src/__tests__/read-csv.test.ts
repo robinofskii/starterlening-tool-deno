@@ -1,6 +1,6 @@
 import { expect } from "@std/expect";
 
-import { loadCbsCsv, loadSVnCsv } from "../helpers/read-csv.ts";
+import { loadCbsCsv, loadSVnCsv } from "../utils/csv/read-csv.ts";
 
 import type { ParsedCbsDataEntry, ParsedSvnDataEntry } from "../types/index.ts";
 

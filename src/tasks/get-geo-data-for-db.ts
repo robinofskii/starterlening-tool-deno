@@ -2,9 +2,9 @@ import {
   getGeolocationByMunicipalityId,
   getMunicipalities,
   postGeolocation,
-} from "../../lib/index.ts";
-import { getNominatimGeolocationByCity } from "../api/index.ts";
-import { randomDelay } from "../index.ts";
+} from "../db/queries/index.ts";
+import { getNominatimGeolocationByCity } from "../services/index.ts";
+import { randomDelay } from "../utils/index.ts";
 
 const data = await getMunicipalities();
 

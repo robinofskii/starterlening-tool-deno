@@ -1,9 +1,3 @@
-export type Municipality = {
-  id: number;
-  municipality: string;
-  loan: string;
-};
-
 export type Geolocation = {
   id: number;
   place_id: number;

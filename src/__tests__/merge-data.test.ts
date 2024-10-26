@@ -1,6 +1,6 @@
 import { expect } from "@std/expect";
 
-import { mergeData } from "../helpers/merge-data.ts";
+import { mergeData } from "../utils/csv/merge-data.ts";
 import type {
   MergeDataResult,
   ParsedCbsDataEntry,

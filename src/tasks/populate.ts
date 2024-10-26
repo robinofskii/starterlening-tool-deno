@@ -1,5 +1,5 @@
-import { loadCbsCsv, loadSVnCsv, mergeData } from "../index.ts";
-import { postgresClient } from "./client.ts";
+import { loadCbsCsv, loadSVnCsv, mergeData } from "../utils/index.ts";
+import { postgresClient } from "../db/client.ts";
 
 // Populate the database with the data from the CSV files
 // This file should be called only with the deno task
