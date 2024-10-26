@@ -8,7 +8,6 @@
     - [Project Details](#project-details)
     - [Testing](#testing)
     - [Code Coverage](#code-coverage)
-  - [Contributing](#contributing)
   - [License](#license)
 
 This project uses public data to create a list of all municipalities in the
@@ -53,22 +52,29 @@ area and export the list of municipalities to popular housing sites.
 
 ### Running the Project
 
-To run the project, execute the following command:
+To run the project, use the Deno Tasks. The following tasks are available:
 
-```sh
-deno run dev
-```
+- `db:populate`: Populate the database with data from the CSV files.
+- `db:geo`: Get geolocation data for each municipality in the database.
+- `dev`: Run the project in development mode. (Currently only prints hello world)
 
 ### Project Details
 
 - The project reads data from multiple CSV files located at
   [`src/data/datasheet.csv`](src/data/datasheet.csv) and
   [`src/data/woonplaatsen_nederland_2024.csv`](src/data/woonplaatsen_nederland_2024.csv).
-- It uses the `loadCsvFile` function from
-  [`src/helpers/read-csv.ts`](src/helpers/read-csv.ts) to load and parse the CSV
-  data.
-- The parsed data is then processed to generate a list of municipalities (plus
-  their state and region) that provide "Startersleningen".
+- This information can be parsed and stored in a PostgreSQL database. With the Deno tasks, you can run the following command to seed the database from the CSV files:
+  ```sh
+  deno task db:populate
+  ```
+- With this data in the database, you can look up geolocation data for each
+  municipality using the following command:
+  ```sh
+  deno task db:geo
+  ```
+  Give it some time to run, it has to make a lot of requests to [Nominatim](
+  https://nominatim.org/
+  ). And I have deliberately added a delay between requests to not overload the server.
 
 ### Testing
 
@@ -89,11 +95,6 @@ deno run test:coverage
 Code coverage reports are generated in the `coverage/` directory. Each JSON file
 in this directory represents the coverage data for a specific script. The
 command above will also generate a `html` file for easier viewing of coverage.
-
-## Contributing
-
-Contributions are welcome! Please open an issue or submit a pull request for any
-changes.
 
 ## License
 
