@@ -1,7 +1,8 @@
 {
   "tasks": {
-    "db:populate": "deno run --allow-read --allow-write --allow-env --allow-net src/helpers/db/populate.ts",
-    "db:geo": "deno run --allow-read --allow-write --allow-env --allow-net src/helpers/db/get-geo-data-for-db.ts",
+    "merge-csv": "deno run --allow-read --allow-write --allow-env --allow-net src/tasks/merge-csv.ts",
+    "db:geo": "deno run --allow-read --allow-write --allow-env --allow-net src/tasks/get-geo-data-for-db.ts",
+    "db:seed": "deno run --allow-read --allow-write --allow-env --allow-net src/db/seed.ts",
     "dev": "deno run --allow-read --allow-write --allow-env --allow-net --watch main.ts",
     "test": "deno test --allow-read --allow-write --parallel",
     "test:coverage": "deno test --allow-read --allow-write --coverage=coverage && deno coverage ./coverage --detailed --html",
@@ -15,6 +16,9 @@
     "@std/expect": "jsr:@std/expect@^1.0.5"
   },
   "compilerOptions": {
-    "lib": ["dom", "deno.ns"]
+    "lib": [
+      "dom",
+      "deno.ns"
+    ]
   }
 }
