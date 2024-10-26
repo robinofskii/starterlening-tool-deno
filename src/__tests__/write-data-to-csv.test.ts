@@ -1,5 +1,5 @@
 import { expect } from "@std/expect";
-import { writeDataToCsv } from "../helpers/write-data-to-csv.ts";
+import { writeDataToCsv } from "../utils/csv/write-data-to-csv.ts";
 import type { MergeDataResult } from "../types/index.ts";
 
 const data: MergeDataResult = [

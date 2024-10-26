@@ -1,5 +1,5 @@
-import { postgresClient } from "../helpers/db/index.ts";
-import type { Municipality } from "../types/api/index.ts";
+import { postgresClient } from "../client.ts";
+import type { Municipality } from "../types/index.ts";
 
 export const getMunicipalities = async (): Promise<Municipality[]> => {
   const data = await postgresClient<Municipality[]>`

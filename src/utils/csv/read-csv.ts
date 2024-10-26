@@ -1,6 +1,9 @@
 import { parse, type ParseOptions } from "@std/csv";
-import { DEFAULT_PARSE_OPTIONS } from "../constants/index.ts";
-import type { ParsedCbsDataEntry, ParsedSvnDataEntry } from "../types/index.ts";
+import { DEFAULT_PARSE_OPTIONS } from "../../config/index.ts";
+import type {
+  ParsedCbsDataEntry,
+  ParsedSvnDataEntry,
+} from "../../types/index.ts";
 
 const loadCsvFile = async <T>(
   filePath: string,
