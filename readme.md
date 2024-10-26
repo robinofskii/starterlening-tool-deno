@@ -56,14 +56,17 @@ To run the project, use the Deno Tasks. The following tasks are available:
 
 - `db:populate`: Populate the database with data from the CSV files.
 - `db:geo`: Get geolocation data for each municipality in the database.
-- `dev`: Run the project in development mode. (Currently only prints hello world)
+- `dev`: Run the project in development mode. (Currently only prints hello
+  world)
 
 ### Project Details
 
 - The project reads data from multiple CSV files located at
   [`src/data/datasheet.csv`](src/data/datasheet.csv) and
   [`src/data/woonplaatsen_nederland_2024.csv`](src/data/woonplaatsen_nederland_2024.csv).
-- This information can be parsed and stored in a PostgreSQL database. With the Deno tasks, you can run the following command to seed the database from the CSV files:
+- This information can be parsed and stored in a PostgreSQL database. With the
+  Deno tasks, you can run the following command to seed the database from the
+  CSV files:
   ```sh
   deno task db:populate
   ```
@@ -72,9 +75,9 @@ To run the project, use the Deno Tasks. The following tasks are available:
   ```sh
   deno task db:geo
   ```
-  Give it some time to run, it has to make a lot of requests to [Nominatim](
-  https://nominatim.org/
-  ). And I have deliberately added a delay between requests to not overload the server.
+  Give it some time to run, it has to make a lot of requests to
+  [Nominatim](https://nominatim.org/). And I have deliberately added a delay
+  between requests to not overload the server.
 
 ### Testing
 

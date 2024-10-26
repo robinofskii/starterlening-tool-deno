@@ -1,42 +1,39 @@
 import { postgresClient } from "../helpers/db/index.ts";
-import type {
-    Geolocation,
-    Municipality,
-} from "../types/api/index.ts";
+import type { Geolocation, Municipality } from "../types/api/index.ts";
 
 export const getGeolocations = async (): Promise<Geolocation[]> => {
-    const data = await postgresClient<Geolocation[]>`
+  const data = await postgresClient<Geolocation[]>`
     SELECT * FROM geolocation
     `;
 
-    return data;
+  return data;
 };
 
 export const getGeolocation = async (
-    geolocationId: Geolocation["id"],
+  geolocationId: Geolocation["id"],
 ): Promise<Geolocation> => {
-    const data = await postgresClient<Geolocation[]>`
+  const data = await postgresClient<Geolocation[]>`
     SELECT * FROM geolocation WHERE id = ${geolocationId}
     `;
 
-    return data[0];
+  return data[0];
 };
 
 export const getGeolocationByMunicipalityId = async (
-    municipalityId: Municipality["id"],
+  municipalityId: Municipality["id"],
 ): Promise<Geolocation[]> => {
-    const data = await postgresClient<Geolocation[]>`
+  const data = await postgresClient<Geolocation[]>`
     SELECT * FROM geolocation WHERE municipality_id = ${municipalityId}
     `;
 
-    return data;
-}
+  return data;
+};
 
 export const postGeolocation = async (
-    municipalityId: Municipality["id"],
-    geoData: Omit<Geolocation, "id">,
+  municipalityId: Municipality["id"],
+  geoData: Omit<Geolocation, "id">,
 ) => {
-    const data = await postgresClient<Geolocation[]>`
+  const data = await postgresClient<Geolocation[]>`
     INSERT INTO geolocation (
         municipality_id, place_id, osm_type, osm_id, latitude, longitude, class, type, place_rank, importance, addresstype, display_name, state, country, country_code, boundingbox
     )
@@ -45,15 +42,15 @@ export const postGeolocation = async (
     );
     `;
 
-    return data;
+  return data;
 };
 
 export const deleteGeolocation = async (
-    geolocationId: Geolocation["id"],
+  geolocationId: Geolocation["id"],
 ) => {
-    const data = await postgresClient<Geolocation[]>`
+  const data = await postgresClient<Geolocation[]>`
     DELETE FROM geolocation WHERE id = ${geolocationId}
     `;
 
-    return data;
-}
+  return data;
+};

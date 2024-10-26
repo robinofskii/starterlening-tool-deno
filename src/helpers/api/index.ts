@@ -1,1 +1,1 @@
-export * from "./nominatim.ts"
+export * from "./nominatim.ts";

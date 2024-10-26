@@ -1,2 +1,2 @@
-export * from "./municipalities.ts"
-export * from "./geolocation.ts" 
+export * from "./municipalities.ts";
+export * from "./geolocation.ts";
